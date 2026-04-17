@@ -1,0 +1,79 @@
+# CodeRabbit Configuration
+#
+# Setup Instructions:
+# 1. Install the CodeRabbit GitHub App from: https://github.com/apps/coderabbitai
+# 2. Select your repository and grant permissions
+# 3. CodeRabbit will automatically review pull requests
+#
+# Learn more: https://docs.coderabbit.ai/
+
+language: en-US
+
+tone_instructions: |
+  Provide constructive, actionable feedback focused on code quality,
+  maintainability, and best practices. Be thorough but concise.
+
+early_access: true
+
+enable_free_tier: true
+
+reviews:
+  profile: assertive
+  request_changes_workflow: true
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+  assess_linked_issues: true
+  related_issues: true
+  related_prs: true
+  enable_prompt_for_ai_agents: true
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - main
+      - development
+  path_filters:
+    - "!**/*.lock"
+    - "!**/node_modules/**"
+    - "!**/dist/**"
+    - "!**/.tanstack/**"
+    - "!**/.output/**"
+  path_instructions:
+    - path: "**/*.tsx"
+      instructions: |
+        Review React components for:
+        - Proper TypeScript types
+        - Accessibility (ARIA labels, semantic HTML)
+        - Performance (memoization, unnecessary re-renders)
+        - TanStack Router best practices
+        - TanStack Query patterns if data fetching is present
+    - path: "**/routes/**"
+      instructions: |
+        Review TanStack Router routes for:
+        - Proper file-based routing conventions
+        - Loader patterns and error boundaries
+        - Route guards and authentication
+    - path: "**/server/**/*"
+      instructions: |
+        Review server functions for:
+        - Input validation
+        - Error handling
+        - Security best practices
+        - Proper use of createServerFn
+    - path: "package.json"
+      instructions: |
+        Review dependencies for:
+        - Security vulnerabilities
+        - Version pinning consistency
+        - Peer dependency conflicts
+  tools:
+    eslint:
+      enabled: true
+    typescript:
+      enabled: true
+
+chat:
+  auto_reply: true
+  create_summary: true
