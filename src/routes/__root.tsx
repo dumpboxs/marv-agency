@@ -18,7 +18,12 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'Marv Agency — Web Development for Small Businesses',
+      },
+      {
+        name: 'description',
+        content:
+          'Professional web development for small businesses, schools, and organizations. Fast turnaround, transparent pricing, no technical jargon. Get your free consultation today.',
       },
     ],
     links: [
