@@ -1,6 +1,8 @@
+import { Link } from '@tanstack/react-router'
+
+import { Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { Menu } from 'lucide-react'
 
 export function Navbar() {
   const scrollToContact = () => {
@@ -9,36 +11,35 @@ export function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-14 items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="fixed top-0 right-0 left-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2" viewTransition>
           <span className="text-xl font-normal tracking-tight">
             Marv Agency
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-6 md:flex">
           <nav className="flex items-center gap-6 text-sm">
-            <a
-              href="#services"
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Services
-            </a>
-            <a
-              href="#portfolio"
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Portfolio
-            </a>
-            <a
-              href="#why-marv"
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Why Marv
-            </a>
+            <Button variant="link" className="p-0" asChild>
+              <Link to="." hash="services" viewTransition>
+                Services
+              </Link>
+            </Button>
+
+            <Button variant="link" className="p-0" asChild>
+              <Link to="." hash="portfolio" viewTransition>
+                Portfolio
+              </Link>
+            </Button>
+
+            <Button variant="link" className="p-0" asChild>
+              <Link to="." hash="why-marv" viewTransition>
+                Why Marv
+              </Link>
+            </Button>
           </nav>
           <Button onClick={scrollToContact}>Get Free Consultation</Button>
         </div>
