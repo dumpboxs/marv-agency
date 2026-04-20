@@ -25,5 +25,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            Marv-Project/marv-agency:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/marv-agency:latest
           platforms: linux/amd64
